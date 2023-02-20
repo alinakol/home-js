@@ -12,29 +12,28 @@
 	<h1>Задача-5</h1>
 	<p>З клавіатури вводиться назва категорії водія (А-мотоцикл, В-легковий автомобіль, С-вантажний автомобіль). Вивести
 		на екран назву транспортного засобу, яким він може керувати.</p>
-	<script>
-		const entercategoryDrivers = prompt('Ваша категорія', '0')
-		const categoryDriver_A = 'a';
-		const categoryDriver_B = 'b';
-		const categoryDriver_C = 'c';
-		result = '';
-		switch (entercategoryDrivers) {
-			case categoryDriver_A:
-				result = ('А-мотоцикл')
-				break;
-			case categoryDriver_B:
-				result = ('B-мотоцикл')
-				break;
-			case categoryDriver_C:
-				result = ('C-мотоцикл')
-				break;
-			default:
-				result = ('Даної категорії не має')
-				break;
-		}
-		document.write(result)
-
-	</script>
+	 <script>
+      const entercategoryDrivers = prompt("Ваша категорія", "0");
+      const categoryDriver_A = "A" || "a";
+      const categoryDriver_B = "B" || "b";
+      const categoryDriver_C = "C" || "c";
+      result = "";
+      switch (true) {
+        case entercategoryDrivers === "A" || entercategoryDrivers === "a":
+          result = "А-мотоцикл";
+          break;
+        case entercategoryDrivers === "B" || entercategoryDrivers === "b":
+          result = "B-мотоцикл";
+          break;
+        case entercategoryDrivers === "C" || entercategoryDrivers === "c":
+          result = "C-мотоцикл";
+          break;
+        default:
+          result = "Даної категорії не має";
+          break;
+      }
+      document.write(result);
+    </script>
 </body>
 
 </html>
