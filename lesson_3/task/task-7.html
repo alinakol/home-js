@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача-7</h1>
+	<p>З клавіатури вводиться номер місяця. Вивести до якої пори він відноситься</p>
+	<script>
+		const numberDayOfMonth = parseInt(prompt('Номер місяця', '0'));
+		const winter = 3;
+		const spring = 6;
+		const summer = 9;
+		const autumn = 12;
+		result = '';
+		switch (true) {
+			case numberDayOfMonth <= winter:
+				result = ('Зима')
+				break;
+			case numberDayOfMonth <= spring:
+				result = ('Весна')
+				break;
+			case numberDayOfMonth <= summer:
+				result = ('Літо')
+				break;
+			case numberDayOfMonth <= autumn:
+				result = ('Осінь')
+				break;
+			default:
+				result = ('Не віhне число');
+				break;
+		}
+		document.write(result)
+	</script>
+</body>
+
+</html>

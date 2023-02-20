@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача-1</h1>
+	<p>З клавіатури вводяться імена двох дітей та кількість у них цукерок. Вивести не екран ім’я тієї дитини, у якої
+		кількість цукерок є більшою, або вивести, що кількість однакова.</p>
+	<script>
+		const nameFirstChildren = prompt('Імя першої дитини', '0');
+		const quanCandiesFirstChildren = parseFloat(prompt('К-сть цукерок', '0'));
+		const nameSecondChildren = prompt('Імя другої дитини', '0');
+		const quanCandiesSecondChildren = parseFloat(prompt('К-сть цукерок', '0'));
+		if (quanCandiesFirstChildren > quanCandiesSecondChildren) {
+			document.write(`${nameFirstChildren} маэ більше цукерок`)
+		}
+		else if (quanCandiesFirstChildren < quanCandiesSecondChildren) {
+			document.write(`${nameSecondChildren} маэ більше цукерок`)
+		}
+
+		else
+			if (quanCandiesFirstChildren === quanCandiesSecondChildren) {
+				document.write(`${nameFirstChildren} та ${nameSecondChildren}  мають однакову к-сть цукерок`)
+			}
+
+	</script>
+</body>
+
+</html>

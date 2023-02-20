@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача-3</h1>
+	<p>Випадковим чином генерується число від 1 до 5. Спробуйте вгадати число за 2 спроби.</p>
+	<script>
+		const numberFirst = parseFloat(prompt('Спроба 1. Введіть число від 1-5', '0'));
+		const numberSecond = parseFloat(prompt('Спроба 2. Введіть число від 1-5', '0'));
+		const minNumber = 1;
+		const maxNumber = 4;
+		let someNumber = minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1))
+		document.write(`Згенероване число ${someNumber} <br>`)
+		if (numberFirst === someNumber)
+			document.write(`Збіг ${numberFirst} = ${someNumber}`)
+		else
+			document.write('<br> Не має збігу')
+		if (numberSecond === someNumber)
+			document.write(`<br> Збіг ${numberSecond} = ${someNumber}`)
+		else
+			document.write('<br> Не має збігу')
+
+		// другий варіант
+		/* if (numberFirst === someNumber || numberSecond === someNumber)
+			document.write('Збіг')
+		else
+			document.write('Не має збігу') */
+	</script>
+</body>
+
+</html>
