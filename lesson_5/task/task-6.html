@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      tabel {
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Задача-6</h1>
+    <p>Вивести 3 таблиці (по 3 рядки і 3 стовпці у кожній) за зразком</p>
+    <script>
+      let counter = 1;
+      document.write(`<div style='display: flex; column-gap: 40px;'>`);
+      for (let t = 1; t <= 3; t++) {
+        document.write(`<table border='2px'>`);
+        for (let row = 1; row <= 3; row++) {
+          document.write(`<tr>`);
+          for (let i = 1; i <= 3; i++) {
+            document.write(`<td> ${counter} </td>`);
+            counter++;
+          }
+          document.write(`</tr>`);
+        }
+        document.write(`</table>`);
+      }
+      document.write(`</div`);
+    </script>
+  </body>
+</html>

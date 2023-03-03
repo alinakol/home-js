@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-9</h1>
+    <p>
+      Користувач загадує число. Комп’ютер задає питання поки не вгадає число
+      користувача (використати confirm).
+    </p>
+    <script>
+      const minYouNumber = parseInt(
+        prompt(
+          "Компютер буде намагатися вгадати число, яке ви загадали.Числовий проміжок та число ви задаєте власноруч.Введіть поаток проміжку "
+        )
+      );
+      const maxYouNumber = parseInt(prompt("Введіть кінец проміжку"));
+      const youNumber = parseInt(prompt("Загадайте число"));
+      let userAnswer;
+      let computerPissOff;
+      do {
+        computerPissOff =
+          minYouNumber +
+          Math.floor(Math.random() * (maxYouNumber - minYouNumber + 1));
+        userAnswer = confirm(`Ви загадували число = ${computerPissOff} ?`);
+      } while (userAnswer === false);
+      if (youNumber === computerPissOff)
+        document.write(
+          `Ви загадували число = ${youNumber}? Так - Збіг! Компьютер вибрав число ${computerPissOff} `
+        );
+      else document.write(`Ви брешите! Ваше число інше`);
+    </script>
+  </body>
+</html>

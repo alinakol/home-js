@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-12</h1>
+    <p>
+      Ігровий автомат. Випадково вибираємо зображення у 3 позиціях. Вибір у
+      кожній позиції вибирається як одне з чотирьох зображень. Вивести ці
+      зображення і повідомити виграш користувача (три перших зображення 100 грн,
+      три других – 200, три третіх – 500, три четвертих зображення – 1000грн).
+      Використати цикли і switch (для вибору зображення за номером).
+    </p>
+    <p>
+      Ігровий автомат.<br />
+      3 яблуко = 100<br />
+      3 груша= 200<br />
+      3 абрикос = 500<br />
+      3 банан = 1000
+    </p>
+    <style>
+      img {
+        max-width: 10%;
+        max-height: 10%;
+      }
+    </style>
+    <script>
+      //у нас е 4 картинки
+
+      // рандомно виьираэться 3
+      let machineSelection;
+      let appleCounter = 0;
+      let pearCounter = 0;
+      let apricotCounter = 0;
+      let bananCounter = 0;
+      let result;
+
+      for (let i = 0; i < 3; i++) {
+        machineSelection = 1 + Math.floor(Math.random() * 4);
+        switch (machineSelection) {
+          case 1:
+            appleCounter++;
+            break;
+          case 2:
+            pearCounter++;
+            break;
+          case 3:
+            apricotCounter++;
+            break;
+          case 4:
+            bananCounter++;
+            break;
+        }
+        document.write(`<img  src="../img/${machineSelection}.png" alt="">`);
+      }
+
+      if (appleCounter === 3) result = 100;
+      else if (pearCounter === 3) result = 200;
+      else if (apricotCounter === 3) result = 500;
+      else if (bananCounter === 3) result = 1000;
+      else result = 0;
+      document.write(`<p>Ваш вийграш ${result}</p>`);
+    </script>
+  </body>
+</html>

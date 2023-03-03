@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-13</h1>
+    <p>
+      Морський бій. Комп’ютер випадково розташовує одиночний корабель на полі
+      розміром N*M. Маючи К снарядів користувач намагається потопити корабель.
+    </p>
+    <script>
+      const shotN = 1 + Math.floor(Math.random() * 5);
+      const shotM = 1 + Math.floor(Math.random() * 5);
+      console.log(`${shotN} ${shotM}`);
+      let i = 0;
+      let shotPlayerN;
+      let shotPlayerM;
+      do {
+        shotPlayerN = parseInt(
+          prompt(`Спроба ${i + 1} Вкажіть перше число від 1-5`, "0")
+        );
+        shotPlayerM = parseInt(
+          prompt(`Спроба ${i + 1} Вкажіть друге число від 1-5`, "0")
+        );
+        if (!isFinite(shotPlayerN) && !isFinite(shotPlayerm)) break;
+        if (shotN === shotPlayerN && shotM === shotPlayerM) {
+          alert("YOU WON");
+          break;
+        }
+        i++;
+      } while (i < 5);
+    </script>
+  </body>
+</html>
