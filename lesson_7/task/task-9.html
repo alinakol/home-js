@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-9</h1>
+    <p>
+      Дано покази температур (довільна кількість). Розробити функцію, яка
+      дозволить підрахувати кількість від’ємних показів температури.
+    </p>
+    <script>
+      function temperatureNegative(number) {
+        let counterSubZero = 0;
+        const minTemp = -30;
+        const maxTemp = 30;
+        for (let i = 0; i < number; i++) {
+          const randomNumber =
+            minTemp + Math.floor(Math.random() * (maxTemp - minTemp + 1));
+          if (randomNumber < 0) counterSubZero++;
+          document.write(`<p> ${i + 1} знчення  ${randomNumber}</p> `);
+        }
+        return counterSubZero;
+      }
+      let number = parseInt(
+        prompt("Введіть к-ть показників, яку будемо обробляти")
+      );
+      const lookFuncton = temperatureNegative(number);
+      document.write(`К-ть від’ємних показів ${lookFuncton}`);
+    </script>
+  </body>
+</html>

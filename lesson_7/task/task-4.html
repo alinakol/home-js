@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-4</h1>
+    <p>
+      Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька
+      результатів: кількість парних, кількість додатних, кількість більших за
+      100.
+    </p>
+    <script>
+      function arithiemicTasks(num1, num2, num3) {
+        let counterMiddleNumber = 0;
+        if (num1 % 2 === 0) counterMiddleNumber++;
+        if (num2 % 2 === 0) counterMiddleNumber++;
+        if (num3 % 2 === 0) counterMiddleNumber++;
+
+        let counterPositivNumber = 0;
+        if (num1 > 0) counterPositivNumber++;
+        if (num2 > 0) counterPositivNumber++;
+        if (num3 > 0) counterPositivNumber++;
+
+        let counterNumberMoreOneHundred = 0;
+        if (num1 > 100) counterNumberMoreOneHundred++;
+        if (num2 > 100) counterNumberMoreOneHundred++;
+        if (num3 > 100) counterNumberMoreOneHundred++;
+        return `Kількість парних = ${counterMiddleNumber} <br> Kількість додатних = ${counterPositivNumber} <br> Kількість більших за
+      100 = ${counterNumberMoreOneHundred}`;
+      }
+      const num1 = parseInt(prompt("Введіть число"));
+      const num2 = parseInt(prompt("Введіть число"));
+      const num3 = parseInt(prompt("Введіть число"));
+      let result = arithiemicTasks(num1, num2, num3);
+      document.write(result);
+    </script>
+  </body>
+</html>

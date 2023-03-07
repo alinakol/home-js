@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-6</h1>
+    <p>
+      Створити функцію, яка створює таблицю з вказаною кількістю рядків і
+      стовпців (таблиця заповнюється заданим фіксованим повідомленням).
+    </p>
+    <script>
+      function getTable(row, columns) {
+        document.write(`<table border='2px'>`);
+        let counter = 1;
+        for (let j = 1; j <= row; j++) {
+          document.write(`<tr>`);
+          for (let i = 1; i <= columns; i++) {
+            document.write(`<td> Hello </td>`);
+          }
+          document.write(`</tr>`);
+        }
+        document.write(`</table>`);
+      }
+      const row = parseInt(prompt("Введіть номер дня від 1 до 7"));
+      const columns = parseInt(prompt("Введіть номер дня від 1 до 7"));
+      let result = getTable(row, columns);
+    </script>
+  </body>
+</html>

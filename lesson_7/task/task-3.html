@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-3</h1>
+    <p>
+      Створити окремі функції, які для 4 чисел знаходять: 1)суму; 2)добуток;
+      3)середнє арифметичне; 4)мінімальне значення.
+    </p>
+    <script>
+      function numberSum(a, b, c, d) {
+        /*  let sum = a + b + c + d; */
+        return a + b + c + d;
+      }
+      function numberMultiplication(a, b, c, d) {
+        /* let sum = a * b * c * d; */
+        return a * b * c * d;
+      }
+      function middleNumber(a, b, c, d) {
+        return (a + b + c + d) / 4;
+      }
+      function minNumber(a, b, c, d) {
+        let min = Infinity;
+        if (a < min) min = a;
+        else if (b < min) min = b;
+        else if (c < min) min = c;
+        else if (d < min) min = d;
+        return min;
+      }
+      let a = parseFloat(prompt("a="));
+      let b = parseFloat(prompt("b="));
+      let c = parseFloat(prompt("c="));
+      let d = parseFloat(prompt("d="));
+      document.write(
+        `Сума = ${numberSum(a, b, c, d)} <br> Добуток = ${numberMultiplication(
+          a,
+          b,
+          c,
+          d
+        )}<br> Cереднє арифметичне = ${middleNumber(
+          a,
+          b,
+          c,
+          d
+        )} <br> Мінімальне значення = ${minNumber(a, b, c, d)}`
+      );
+    </script>
+  </body>
+</html>

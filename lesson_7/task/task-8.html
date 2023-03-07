@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-4</h1>
+    <p>
+      Створити функцію, яка виводить банер (у функцію передаються: зображення,
+      заголовок та посилання, куди переходимо при кліку на зображення (тег img
+      повине знаходитись у середині тега a).
+    </p>
+    <script>
+      function show(titel, img, link) {
+        return `  <div>
+                  <h2>${titel}</h2>
+                 <a href="${link}"><img src="${img}" alt="" /></a>
+               </div> `;
+      }
+      const titel = "YouTube";
+      const img = "../img/youTube.jpg";
+      const link = "https://www.youtube.com/";
+      const userBanner = show(titel, img, link);
+      document.write(userBanner);
+    </script>
+  </body>
+</html>
