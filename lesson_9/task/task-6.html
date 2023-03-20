@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-6</h1>
+    <p>
+      Дано масив елементів. Усі елементи, які більші за перший елемент помножити
+      на 2
+    </p>
+
+    <script>
+      function getBildNewArray(enterNumber) {
+        let arr = [];
+        for (let i = 0; i < enterNumber; i++) {
+          const randomNum = 1 + Math.floor(Math.random() * 20);
+          arr.push(randomNum);
+        }
+        return arr;
+      }
+
+      const enterNumber = parseInt(prompt("Введіть довжину масиву"));
+      const resultBildNewArray = getBildNewArray(enterNumber);
+
+      let numberFirstLiteral = resultBildNewArray.slice(0, 1);
+      document.write(`Перше число : ${numberFirstLiteral}<br>`);
+      document.write(`До : ${resultBildNewArray}<br>`);
+
+      resultBildNewArray.forEach((element, index, arrRef) => {
+        if (element > numberFirstLiteral) arrRef[index] *= 2;
+      });
+      document.write(`После : ${resultBildNewArray}<br>`);
+    </script>
+  </body>
+</html>

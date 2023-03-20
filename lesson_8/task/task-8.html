@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-8</h1>
+    <p>
+      Дано одновимірний масив, у якому зберігається певна виграшна сума
+      (елементи заповнюються випадковим чином значеннями від -500 до 500).
+      Надаючи користувачу можливість вибирати номери елементів (поки він не
+      відмовиться). Знаходити сумарний виграш.
+    </p>
+    <script>
+      function getKeepSum(number) {
+        let min = -500;
+        let max = 500;
+        let sum = [];
+        for (let i = 0; i < number; i++) {
+          const wonSum = min + Math.floor(Math.random() * (max - min + 1));
+          sum.push(wonSum);
+        }
+        return sum;
+      }
+      const quntutyNumber = getKeepSum(60);
+      console.log(quntutyNumber);
+
+      function getChoiceNumber(quntutyNumber) {
+        let counter = 0;
+        for (;;) {
+          const choiceCell = parseInt(prompt("Ведіть номер ячейки"));
+
+          if (!isFinite(choiceCell)) break;
+          counter += quntutyNumber[choiceCell - 1];
+        }
+
+        return counter;
+      }
+      const resultWon = getChoiceNumber(quntutyNumber);
+      document.write(`Cумарний виграш ${resultWon}`);
+    </script>
+  </body>
+</html>

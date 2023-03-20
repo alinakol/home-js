@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-7</h1>
+    <p>
+      Дано масив цін. Змінити цей масив так, що на ціни товарів, які більші за
+      1000 грн. дати 30% знижки.
+    </p>
+
+    <script>
+      function getBildNewArray(enterNumber) {
+        let arr = [];
+        for (let i = 0; i < enterNumber; i++) {
+          const randomNum = 1 + Math.floor(Math.random() * 2000);
+          arr.push(randomNum);
+        }
+        return arr;
+      }
+
+      const enterNumber = parseInt(prompt("Введіть довжину масиву"));
+      const resultBildNewArray = getBildNewArray(enterNumber);
+      document.write(`До : ${resultBildNewArray}<br>`);
+
+      const TAX_PERCENT = 30;
+
+      resultBildNewArray.forEach((element, index, arrRef) => {
+        if (element > 1000)
+          arrRef[index] -= (arrRef[index] * TAX_PERCENT) / 100;
+      });
+
+      document.write(`После : ${resultBildNewArray}<br>`);
+    </script>
+  </body>
+</html>

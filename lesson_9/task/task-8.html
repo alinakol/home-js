@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-8</h1>
+    <p>
+      Дано масив номерів авто. Сформувати новий масив тих, які починаються на
+      «А»
+    </p>
+    <script>
+      function getNewArrNumbersAutoStart_A(numbersAuto) {
+        const newArrAutoStart_A = numbersAuto.filter(
+          (element) => element[0] === "A"
+        );
+        return newArrAutoStart_A;
+      }
+      const numbersAuto = [
+        "AB7865BB",
+        "IK1000KI",
+        "0026Ю1",
+        "A0026Ю1",
+        "011-2100",
+        "E983H",
+        "AB0067MM",
+        "0026Ю0",
+        "BC887CB",
+        "AH8890P",
+      ];
+
+      const resultNumbersAutoStart_A = getNewArrNumbersAutoStart_A(numbersAuto);
+      document.write(resultNumbersAutoStart_A);
+    </script>
+    <script></script>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-2</h1>
+    <p>
+      Дано масив, який зберігає кількість відвідувачів магазину протягом тижня.
+      Вивести на екран: 1. номери днів, протягом яких кількість відвідувачів
+      була меншою за 20; 2. номери днів, коли кількість відвідувачів була
+      мінімальною; 3. номери днів, коли кількість відвідувачів була
+      максимальною; 4. загальну кількість клієнтів у робочі дні та окремо
+      загальну кількість днів на вихідних.
+    </p>
+    <script>
+      function guantityPersons(itemNumber) {
+        let arr = [];
+        for (let i = 0; i < itemNumber; i++) {
+          const guantityPersonsOneDay = 1 + Math.floor(Math.random() * 50);
+          arr.push(guantityPersonsOneDay);
+        }
+        return arr;
+      }
+
+      function minPerson_20(guantityDayOfWeek) {
+        let counterMin_20 = [];
+        for (let i = 0; i < guantityDayOfWeek.length; i++) {
+          if (guantityDayOfWeek[i] <= 20) counterMin_20.push(i + 1);
+        }
+        return counterMin_20;
+      }
+
+      function getMinNum(guantityDayOfWeek) {
+        let minMark = Infinity;
+
+        for (let i = 0; i < guantityDayOfWeek.length; i++) {
+          if (guantityDayOfWeek[i] < minMark) minMark = guantityDayOfWeek[i];
+        }
+        let numMinPipleDay = [];
+        for (let i = 0; i < guantityDayOfWeek.length; i++) {
+          if (guantityDayOfWeek[i] === minMark) numMinPipleDay.push(i + 1);
+        }
+        return numMinPipleDay;
+      }
+
+      function getMaxNum(guantityDayOfWeek) {
+        let maxMark = -Infinity;
+        for (let i = 0; i < guantityDayOfWeek.length; i++) {
+          if (guantityDayOfWeek[i] > maxMark) maxMark = guantityDayOfWeek[i];
+        }
+        let numMaxPipleDay = [];
+        for (let i = 0; i < guantityDayOfWeek.length; i++) {
+          if (guantityDayOfWeek[i] === maxMark) numMaxPipleDay.push(i + 1);
+        }
+        return numMaxPipleDay;
+      }
+
+      function getIncomeSum(guantityDayOfWeek, startWeekNumber, endWeekNumber) {
+        let sum = 0;
+        for (let week = startWeekNumber; week <= endWeekNumber; week++) {
+          sum += guantityDayOfWeek[week - 1];
+        }
+        return sum;
+      }
+
+      const guantityDayOfWeek = guantityPersons(7);
+      console.log(guantityDayOfWeek);
+      const visitedOfDayPersonMin_20 = minPerson_20(guantityDayOfWeek);
+      const min = getMinNum(guantityDayOfWeek);
+      const max = getMaxNum(guantityDayOfWeek);
+      const sum_1_5 = getIncomeSum(guantityDayOfWeek, 1, 5);
+      const sum_6_7 = getIncomeSum(guantityDayOfWeek, 6, 7);
+
+      document.write(
+        `<p>Номери днів, протягом яких кількість відвідувачів була меншою за 20 - ${visitedOfDayPersonMin_20}</p> <p>Номери днів, коли кількість відвідувачів була
+                     мінімальною - ${min}-го дня, максимальною -  ${max}-го дня</p> <p>Загальну кількість клієнтів у робочі дні ${sum_1_5}</p> <p>загальну кількість клієнтів на вихідних  ${sum_6_7}</p>`
+      );
+    </script>
+  </body>
+</html>

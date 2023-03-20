@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-4</h1>
+    <p>Дано масив елементів. Вивести на екран елементи, що більші за 100</p>
+    <script>
+      function getBildNewArray(enterNumber) {
+        let arr = [];
+        for (let i = 0; i < enterNumber; i++) {
+          const randomNum = 1 + Math.floor(Math.random() * 500);
+          arr.push(randomNum);
+        }
+        return arr;
+      }
+      const enterNumber = parseInt(prompt("Введіть довжину масиву"));
+      const resultBildNewArray = getBildNewArray(enterNumber);
+      console.log(resultBildNewArray);
+
+      function getSearchElementMore_100(resultBildNewArray) {
+        for (const newArrayElementMore_100 of resultBildNewArray)
+          if (newArrayElementMore_100 > 100)
+            document.write(`${newArrayElementMore_100}<br>`);
+
+        return;
+      }
+      let s = getSearchElementMore_100(resultBildNewArray);
+    </script>
+  </body>
+</html>

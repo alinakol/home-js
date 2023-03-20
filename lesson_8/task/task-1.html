@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-1</h1>
+    <p>
+      Дано масив, який містить оцінки з К предметів. Знайти середній бал і
+      з’ясувати до якої категорії він відноситься (відмінник, двійочник (має
+      хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча
+      би одна трійка)).
+    </p>
+    <script>
+      //знаходимо к предметів
+      function getGuantityItems(guantityItems) {
+        let allGarade = [];
+        for (let i = 1; i <= guantityItems; i++) {
+          const garade = 1 + Math.floor(Math.random() * 12);
+          allGarade.push(garade);
+        }
+        return allGarade;
+      }
+
+      function getAveregeScore(garadeList) {
+        let someSum = 0;
+        for (let score = 0; score < garadeList.length; score++) {
+          someSum += garadeList[score];
+        }
+        return Math.ceil(someSum / garadeList.length);
+      }
+
+      function getMinMark(garadeList) {
+        let minMark = garadeList[0];
+
+        for (let i = 0; i < garadeList.length; i++) {
+          if (minMark > garadeList[i]) minMark = garadeList[i];
+        }
+
+        return minMark;
+      }
+
+      function getCategory(garadeMin) {
+        let result;
+        switch (garadeMin) {
+          case 1:
+          case 2:
+          case 3:
+            result = "двійочник";
+            break;
+          case 4:
+          case 5:
+          case 6:
+            result = "трійочник";
+            break;
+          case 7:
+          case 8:
+          case 9:
+            result = "хорошист";
+            break;
+          case 10:
+          case 11:
+          case 12:
+            result = "відмінник";
+            break;
+          default:
+            result = "Error";
+        }
+        return result;
+      }
+      const guantityItems = parseInt(prompt("Ввдедть к-сть оцінок"));
+      const garadeList = getGuantityItems(guantityItems);
+      const garadeMin = getMinMark(garadeList);
+      document.write(`
+        Його оцінки ${garadeList} <br> Його середня оцінка ${getAveregeScore(
+        garadeList
+      )} <br> Учень ${getCategory(garadeMin)}. `);
+    </script>
+  </body>
+</html>

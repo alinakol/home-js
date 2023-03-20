@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-10</h1>
+    <p>
+      Дано масив цін у грн. Податок складає 20%. Сформувати масив, який буде
+      містити величину сплаченого податку у грн.
+    </p>
+    <script>
+      function getBildNewArray(enterNumber) {
+        let arr = [];
+        for (let i = 0; i < enterNumber; i++) {
+          const randomNum = 1 + Math.floor(Math.random() * 2000);
+          arr.push(randomNum);
+        }
+        return arr;
+      }
+
+      const enterNumber = parseInt(prompt("Введіть довжину масиву"));
+      const resultBildNewArray = getBildNewArray(enterNumber);
+      document.write(`<p>До ${resultBildNewArray}</p>`);
+
+      function prosentAllSum(resultBildNewArray, TAX_PERCENT) {
+        resultBildNewArray.forEach((element, index, arrRef) => {
+          arrRef[index] -= (arrRef[index] * TAX_PERCENT) / 100;
+        });
+      }
+      const TAX_PERCENT = 20;
+      let resulrProsent = prosentAllSum(resultBildNewArray, TAX_PERCENT);
+      document.write(`<p>Після ${resultBildNewArray}</p>`);
+    </script>
+  </body>
+</html>

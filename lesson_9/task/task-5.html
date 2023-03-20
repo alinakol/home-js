@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-5</h1>
+    <p>Дано масив елементів. Знайти добуток додатних елементів</p>
+    <script>
+      function getBildNewArray(enterNumber) {
+        let min = -10;
+        let max = 10;
+        let arr = [];
+        for (let i = 0; i < enterNumber; i++) {
+          const randomNum = min + Math.floor(Math.random() * (max - min + 1));
+          arr.push(randomNum);
+        }
+        return arr;
+      }
+      const enterNumber = parseInt(prompt("Введіть довжину масиву"));
+      const resultBildNewArray = getBildNewArray(enterNumber);
+      console.log(resultBildNewArray);
+
+      function getSearchElementMore_0(resultBildNewArray) {
+        let sum = 1;
+        for (const newArrayElementMore_0 of resultBildNewArray)
+          if (newArrayElementMore_0 > 0) sum *= newArrayElementMore_0;
+        return sum;
+      }
+      let resultSearchElementMore_0 =
+        getSearchElementMore_0(resultBildNewArray);
+      document.write(resultSearchElementMore_0);
+    </script>
+  </body>
+</html>

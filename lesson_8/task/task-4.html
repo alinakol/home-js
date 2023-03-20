@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-4</h1>
+    <p>
+      Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які
+      : • починаються на букву «А»; • перша і остання літери співпадають; •
+      складаються з більше ніш 5 символів;
+    </p>
+    <script>
+      function getNumberAuto(...numbers) {
+        let firstLetera_A = 0;
+        let firstAndLastLeterTheSame = 0;
+        let sumLeterMore_5 = 0;
+        for (let i = 0; i < numbers.length; i++) {
+          if (numbers[i][0] === "A") firstLetera_A++;
+          if (numbers[i][0] === numbers[i][numbers[i].length - 1])
+            firstAndLastLeterTheSame++;
+          if (numbers[i].length >= 5) sumLeterMore_5++;
+        }
+        return `<p>Починаються на букву «А» - ${firstLetera_A}</p>  
+		  <p>Перша і остання літери співпадають - ${firstAndLastLeterTheSame}</p> 
+		   <p>Складаються з більше ніш 5 символів ${sumLeterMore_5}</p>`;
+      }
+
+      let numbers = [
+        "AB7865BB",
+        "IK1000KI",
+        "0026Ю1",
+        "011-2100",
+        "E983H",
+        "AB0067MM",
+        "0026Ю0",
+        "BC887CB",
+      ];
+      console.log(numbers);
+      let resultAllNumber = getNumberAuto(...numbers);
+      document.write(resultAllNumber);
+
+     
+    </script>
+    <p></p>
+  </body>
+</html>

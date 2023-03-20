@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-6</h1>
+    <p>
+      Дано послідовність цін товарів та назв (у окремих масивах). Вивести на
+      екран ті, які може собі дозволити користувач (кількість грошей задається).
+    </p>
+    <script>
+      function getProductYouCanBay(
+        quantityNumbers,
+        namesAllProducts,
+        nowMoneyYouHave
+      ) {
+        let counerPrise = [];
+        for (let i = 0; i < quantityNumbers.length; i++) {
+          if (quantityNumbers[i] <= nowMoneyYouHave)
+            counerPrise += `<p>${namesAllProducts[i]} - ${quantityNumbers[i]} </p>`;
+        }
+        return counerPrise;
+      }
+
+      const quantityNumbers = [
+        "100",
+        "20",
+        "70",
+        "120",
+        "200",
+        "15",
+        "80",
+        "100",
+        "400",
+        "160",
+      ];
+      console.log(quantityNumbers);
+      const namesAllProducts = [
+        "Картопля",
+        "Масло",
+        "Авокадо",
+        "Мясо",
+        "Риба",
+        "Мед",
+        "Овсянка",
+        "Банан",
+        "Груша",
+        "Полуниця",
+        "Помідор",
+      ];
+      const nowMoneyYouHave = parseInt(prompt("Введіть вашу сумму грошей"));
+
+      const n = getProductYouCanBay(
+        quantityNumbers,
+        namesAllProducts,
+        nowMoneyYouHave
+      );
+      document.write(n);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-7</h1>
+    <p>
+      Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей
+      за: 1) за весь рік; 2) у першій половині року; 3) у другій половині року;
+      4) за літо; 5) за ІІ квартал; 6) за парні місяці (з парними номерами); 7)
+      за місяці, які є початковими у сезоні (весна, літо, осінь, зима).
+    </p>
+    <script>
+      function listPaymentForTheYear(quantityMonth) {
+        let keepPayments = [];
+        for (let i = 0; i < quantityMonth; i++) {
+          const randomPayment = 1 + Math.floor(Math.random() * 100);
+          keepPayments.push(randomPayment);
+        }
+        return keepPayments;
+      }
+
+      const quantityMonth = listPaymentForTheYear(12);
+      console.log(quantityMonth);
+
+      function getIncomeSum(quantityMonth, startMonthNumber, endMonthNumber) {
+        let sum = 0;
+        for (let i = startMonthNumber; i <= endMonthNumber; i++) {
+          sum += quantityMonth[i - 1];
+        }
+        return sum;
+      }
+
+      function evenMonth(quantityMonth, endMonthNumber) {
+        let sum = 0;
+        for (let i = 1; i <= endMonthNumber; i++) {
+          if ((i + 1) % 2 === 0) sum += quantityMonth[i - 1];
+        }
+        return sum;
+      }
+
+      function startMonthSeason(quantityMonth, endMonthNumber) {
+        let sum = 0;
+        for (let i = 1; i <= endMonthNumber; i++) {
+          if ((i + 1) % 3 === 0) sum += quantityMonth[i - 1];
+        }
+        return sum;
+      }
+      // 1) за весь рік;
+      const sumAllYear = getIncomeSum(quantityMonth, 1, 12);
+
+      // 2) у першій половині року;
+      const sum_1_6 = getIncomeSum(quantityMonth, 1, 6);
+
+      //3) у другій половині року;
+      const sum_7_12 = getIncomeSum(quantityMonth, 7, 12);
+
+      // 4) за літо;
+      const sum_6_8 = getIncomeSum(quantityMonth, 6, 8);
+
+      // 5) за ІІ квартал;
+      const sum_4_6 = getIncomeSum(quantityMonth, 4, 6);
+
+      //6) за парні місяці (з парними номерами);
+      const sumPairedMonth = evenMonth(quantityMonth, 12);
+
+      // 7) за місяці, які є початковими у сезоні (весна, літо, осінь, зима).
+      const sumFirstMonthSeacon = startMonthSeason(quantityMonth, 12);
+
+      document.write(
+        `  За весь рік ${sumAllYear} <br>  За першу половину року ${sum_1_6} <br> За другу половину року ${sum_1_6} <br> За літо ${sum_6_8}<br> За ІІ квартал ${sum_6_8} <br> За парні місяці ${sumPairedMonth} <br>  За місяці, які є початковими у сезоні (весна, літо, осінь, зима) ${sumFirstMonthSeacon}`
+      );
+    </script>
+  </body>
+</html>

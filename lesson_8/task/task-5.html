@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-5</h1>
+    <p>
+      Дано послідовність оцінок учня. Підрахувати кількість: 1) двійок 2)
+      кількість хороших оцінок (добре, відмінно); 3) кількість оцінок, які нижче
+      середнього.
+    </p>
+    <script>
+      function raitingPerson(quntityAssesment) {
+        let arr = [];
+        for (let i = 0; i < quntityAssesment; i++) {
+          const assesmentOneItem = 1 + Math.floor(Math.random() * 5);
+          arr.push(assesmentOneItem);
+        }
+        return arr;
+      }
+
+      //1) двійок
+
+      function howMany_2(quntityAssesment) {
+        let counerHowMany_2 = 0;
+        let counterFine = 0;
+        let counterGreat = 0;
+
+        let numLessMiddleResulr = 0;
+        for (let i = 0; i < quntityAssesment.length; i++) {
+          if (quntityAssesment[i] === 2) counerHowMany_2++;
+          if (quntityAssesment[i] === 3 || quntityAssesment[i] === 4)
+            counterFine++;
+          if (quntityAssesment[i] === 5) counterGreat++;
+
+          if (quntityAssesment[i] <= resultMiddle) numLessMiddleResulr++;
+        }
+        return `<p> Кількість двійок - ${counerHowMany_2} </p>
+          <p> Кількість оцінок добре ${counterFine}  </p>
+          <p> Кількість  оцінок відмінно ${counterGreat}  </p>
+          <p> Кількість  оцінок нижче середнього ${numLessMiddleResulr}  </p>`;
+      }
+      //знаходим  середне значення
+      function middleRating(quntityAssesment) {
+        let sum = 0;
+        let middleResulr;
+        for (let i = 0; i < quntityAssesment.length; i++) {
+          sum += quntityAssesment[i];
+        }
+        middleResulr = sum / quntityAssesment.length;
+        return middleResulr;
+      }
+
+      const quntityAssesment = raitingPerson(10);
+      console.log(quntityAssesment);
+
+      // середне значення
+      const resultMiddle = middleRating(quntityAssesment);
+      console.log(resultMiddle);
+
+      // виводимо фугкцію
+      const ratingAllResult = howMany_2(quntityAssesment);
+      document.write(ratingAllResult);
+    </script>
+  </body>
+</html>
