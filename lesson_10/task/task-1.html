@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача</h1>
+
+    <script>
+      //Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000)
+      function getBildNewArray(enterNumber, minPrice, maxPrice) {
+        let arr = [];
+        for (let i = 0; i < enterNumber; i++) {
+          const randomPrice =
+            minPrice + Math.floor(Math.random() * (maxPrice - minPrice + 1));
+          arr.push(randomPrice);
+        }
+        return arr;
+      }
+      const enterNumber = parseInt(
+        prompt("Введіть триваліть періоду за який переглядаємо ціни")
+      );
+      const minPrice = 1;
+      const maxPrice = 10000;
+      const resultBildNewArray = getBildNewArray(
+        enterNumber,
+        minPrice,
+        maxPrice
+      );
+      document.write(
+        `<p>Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000) <br> ${resultBildNewArray}</p>Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000) <br> ${resultBildNewArray}`
+      );
+
+      // 1)Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн.
+      let arrPriceMore_1000 = resultBildNewArray.filter(
+        (element) => element > 1000
+      );
+      document.write(
+        `    <p>1) Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн. <br> ${arrPriceMore_1000}</p>`
+      );
+      // 2)Сформувати новий масив, у якому є номери тільки тих, що більші за 1000
+      // грн.
+      let arrNumberPriceMore_1000 = [];
+      resultBildNewArray.filter((element, index) => {
+        if (element > 1000) arrNumberPriceMore_1000.push(index);
+      });
+      document.write(
+        ` <p>2) Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн. <br> ${arrNumberPriceMore_1000}</p>`
+      );
+      //3)Сформувати список з тих цін, які більші за попереднє значення
+
+      let listPriceMorePrevious = resultBildNewArray.map(
+        (element, index, adress) => {
+          if (element > adress[index - 1]) return element;
+        }
+      );
+      document.write(
+        ` <p> 3) ССформувати список з тих цін, які більші за попереднє значення <br> ${listPriceMorePrevious} </p>`
+      );
+
+      // 4)Сформувати новий масив, що міститиме значення цін у відсотках стосовно
+      // максимального
+      let maxNumber = Math.max(...resultBildNewArray);
+
+      let newArrProsentMaxNum = [];
+      resultBildNewArray.map((element, index) => {
+        let result = maxNumber - element;
+        newArrProsentMaxNum.push((100 * result) / maxNumber + "%");
+      });
+      document.write(
+        ` <p> 4) Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального <br> ${newArrProsentMaxNum} </p>`
+      );
+
+      //Підрахувати кількість змін цін
+      const priceChange = resultBildNewArray.reduce((prevValue, el, index) => {
+        if (el !== el[index - 1]) prevValue++;
+        return prevValue;
+      }, 0);
+      document.write(
+        ` <p> 5) Підрахувати кількість змін цін <br> ${priceChange} </p>`
+      );
+
+      //Визначити, чи є ціна, що менше 1000
+      /*  const listPriceLess_1000 = [];
+               resultBildNewArray.some((el) => {
+                 if (el < 1000) listPriceLess_1000.push(el);
+               });
+               document.write(
+                 ` <p> 6) Визначити, чи є ціна, що менше 1000 <br> ${listPriceLess_1000} </p>`
+               ); */
+
+      const listPriceLess_1000 = resultBildNewArray.some((el) => el < 1000);
+      document.write(
+        ` <p> 6) Визначити, чи є ціна, що менше 1000 <br> ${listPriceLess_1000} </p>`
+      );
+
+      //Визначати, чи усі ціни більше за 1000
+      const listAllPriceMore_1000 = resultBildNewArray.every((el) => el > 1000);
+      document.write(
+        ` <p> 7) Визначати, чи усі ціни більше за 1000 <br> ${listAllPriceMore_1000} </p>`
+      );
+
+      //Підрахувати кількість цін, що більше за 1000
+      const quantityPriceMore_1000 = resultBildNewArray.reduce(
+        (prevValue, el) => {
+          return el > 1000 ? prevValue + 1 : prevValue;
+        },
+        0
+      );
+
+      document.write(
+        ` <p> 8) Підрахувати кількість цін, що більше за 1000 <br> ${quantityPriceMore_1000} </p>`
+      );
+
+      //Підрахувати суму цін, що більше за 1000
+      const sumPriceMore_1000 = resultBildNewArray.reduce(
+        (prevValue, el, index, baseArr) => {
+          return el > 1000 ? prevValue + el : prevValue;
+        },
+        0
+      );
+      document.write(
+        ` <p> 9) Підрахувати суму цін, що більше за 1000 <br> ${sumPriceMore_1000} </p>`
+      );
+
+      //Знайти першу ціну, що більше за 1000
+      const firstPriceMore_1000 = resultBildNewArray.find((el) => el > 1000);
+      document.write(
+        ` <p> 10) Знайти першу ціну, що більше за 1000 <br> ${firstPriceMore_1000} </p>`
+      );
+
+      //Знайти індекс першої ціни, що більше за 1000
+      const firstIndexPriceMore_1000 = resultBildNewArray.findIndex(
+        (el) => el > 1000
+      );
+      document.write(
+        ` <p> 11) Знайти індекс першої ціни, що більше за 1000 <br> ${firstIndexPriceMore_1000} </p>`
+      );
+
+      //Знайти останню ціну, що більше за 1000
+
+      const lastPriceMore_1000 = resultBildNewArray.findLast((el) => el > 1000);
+      document.write(
+        ` <p> 12) Знайти останню ціну, що більше за 1000 <br> ${lastPriceMore_1000} </p>`
+      );
+
+      // Знайти індекс останньої ціни, що більше за 1000
+      const lastIndexPriceMore_1000 = resultBildNewArray.findLastIndex(
+        (el) => el > 1000
+      );
+      document.write(
+        ` <p> 13) Знайти індекс останньої ціни, що більше за 1000 <br> ${lastIndexPriceMore_1000} </p>`
+      );
+    </script>
+  </body>
+</html>
