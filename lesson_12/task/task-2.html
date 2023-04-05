@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-2</h1>
+    <p>
+      Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під
+      час сортування змішуванням.
+    </p>
+    <script>
+      function generateRandomProfit(minValue, maxValue) {
+        return minValue + Math.floor(Math.random() * (maxValue - minValue + 1));
+      }
+
+      function getBildingresultArray(quantityNumber, minValue, maxValue) {
+        let arr1 = [];
+        for (let i = 0; i < quantityNumber; i++) {
+          const randomNumber = generateRandomProfit(minValue, maxValue);
+          arr1.push(randomNumber);
+        }
+        return arr1;
+      }
+
+      const minValue = -100;
+      const maxValue = 100;
+      const quantityNumber = 30;
+      const resultArray = getBildingresultArray(
+        quantityNumber,
+        minValue,
+        maxValue
+      );
+      console.log(resultArray);
+
+      let count = 0;
+      let leftIndex = 0;
+      let rightIndex = resultArray.length - 1;
+      console.log(rightIndex);
+      while (leftIndex < rightIndex) {
+        for (let index = leftIndex; index < rightIndex; index++) {
+          if (resultArray[index] > resultArray[index + 1]) {
+            [resultArray[index], resultArray[index + 1]] = [
+              resultArray[index + 1],
+              resultArray[index],
+            ];
+            count++;
+          }
+        }
+        rightIndex--;
+
+        for (let index = rightIndex; index > leftIndex; index--) {
+          if (resultArray[index] < resultArray[index - 1]) {
+            [resultArray[index], resultArray[index - 1]] = [
+              resultArray[index - 1],
+              resultArray[index],
+            ];
+            count++;
+          }
+        }
+        leftIndex++;
+      }
+      console.log(count);
+    </script>
+  </body>
+</html>

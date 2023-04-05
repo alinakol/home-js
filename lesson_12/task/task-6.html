@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-6</h1>
+    <p>
+      Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук
+      визначити, чи є у масиві ім’я довжиною 5 символів і під яким індексом.
+    </p>
+    <script>
+      function binarySearch(arrNames, searchElement) {
+        let start = 0;
+        let end = arrNames.length - 1;
+        while (start <= end) {
+          const middle = Math.floor((start + end) / 2);
+          if (arrNames[middle].length === searchElement) return middle;
+          if (arrNames[middle].length < searchElement) start = middle + 1;
+          if (arrNames[middle].length > searchElement) end = middle - 1;
+        }
+        return -1;
+      }
+
+      let arrNames = ["Max", "Vika", "Alina", "Roma", "Anna", "Dasha"];
+      arrNames.sort((el1, el2) => {
+        return el1.length - el2.length;
+      });
+      console.log(arrNames);
+      let searchElement = 5;
+      let resultBinarySearch = binarySearch(arrNames, searchElement);
+      console.log(
+        `Ім’я довжиною 5 символів під індексом ${resultBinarySearch}`
+      );
+    </script>
+  </body>
+</html>

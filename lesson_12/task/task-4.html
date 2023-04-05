@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-4</h1>
+    <p>
+      Для розглянутих методів сортування спробувати вивести етапи сортування
+      шляхом виведення відповідних таблиць за зразком.
+    </p>
+    <script>
+      let arr = [3, 5, 1, 4, 2];
+      document.write(`<br>Start bobble sort [${arr}]<br>`);
+
+      let changed;
+      let counter = 0;
+      do {
+        changed = false;
+
+        for (let i = 1; i < arr.length; i++) {
+          if (arr[i - 1] > arr[i]) {
+            let tmp = arr[i - 1];
+            arr[i - 1] = arr[i];
+            arr[i] = tmp;
+            changed = true;
+            counter++;
+            document.write(`<br>[${arr}]<br>`);
+          }
+        }
+      } while (changed);
+
+      document.write(
+        `--------------------------------------------------------------------------------------`
+      );
+      let array = [2, 5, -5, 7, 11, 23];
+      document.write(`<br>Start cocktail sort [${array}]<br>`);
+
+      let count = 0;
+      let leftIndex = 0;
+      let rightIndex = array.length - 1;
+      while (leftIndex < rightIndex) {
+        for (let index = leftIndex; index < rightIndex; index++) {
+          if (array[index] > array[index + 1]) {
+            [array[index], array[index + 1]] = [array[index + 1], array[index]];
+            count++;
+          }
+        }
+        rightIndex--;
+        document.write(`<br>left: [${array}]<br>`);
+
+        for (let index = rightIndex; index > leftIndex; index--) {
+          if (array[index] < array[index - 1]) {
+            [array[index], array[index - 1]] = [array[index - 1], array[index]];
+            count++;
+          }
+        }
+        leftIndex++;
+        document.write(`<br>right:  [${array}]<br>`);
+      }
+      document.write(
+        `--------------------------------------------------------------------------------------`
+      );
+
+      let arrNew = [3, 5, 33, -4, 51, 3];
+      document.write(`<br>	Start insertion sort: [${arrNew}]<br>`);
+
+      let countNew = 0;
+      let num, k;
+      for (let i = 1; i < arrNew.length; i++) {
+        num = arrNew[i];
+        k = i - 1;
+        while (k >= 0 && arrNew[k] > num) {
+          arrNew[k + 1] = arrNew[k];
+          k = k - 1;
+          countNew++;
+          document.write(`<br>[${arrNew}]<br>`);
+        }
+        arrNew[k + 1] = num;
+      }
+      console.log(countNew);
+    </script>
+  </body>
+</html>

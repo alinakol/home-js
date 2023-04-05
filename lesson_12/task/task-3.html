@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-3</h1>
+    <p>
+      Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під
+      час сортування включеннями.
+    </p>
+    <script>
+      function generateRandomProfit(minValue, maxValue) {
+        return minValue + Math.floor(Math.random() * (maxValue - minValue + 1));
+      }
+
+      function getBildingArr(quantityNumber, minValue, maxValue) {
+        let arr = [];
+        for (let i = 0; i < quantityNumber; i++) {
+          const randomNumber = generateRandomProfit(minValue, maxValue);
+          arr.push(randomNumber);
+        }
+        return arr;
+      }
+
+      const minValue = -100;
+      const maxValue = 100;
+      const quantityNumber = 30;
+      const resultArray = getBildingArr(quantityNumber, minValue, maxValue);
+      console.log(resultArray);
+
+      let counter = 0;
+      let num, k;
+      for (let i = 1; i < resultArray.length; i++) {
+        num = resultArray[i];
+        k = i - 1;
+        while (k >= 0 && resultArray[k] > num) {
+          resultArray[k + 1] = resultArray[k];
+          k = k - 1;
+          counter++;
+        }
+        resultArray[k + 1] = num;
+      }
+      console.log(counter);
+    </script>
+  </body>
+</html>
