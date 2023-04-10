@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-5</h1>
+    <p>
+      Тренажер додавання. Кожні 10 секунд користувачу задають випадковий приклад
+      з додавання двох цифр і робиться перевірка.
+    </p>
+    <script>
+      function randomNumber(maxV, minV) {
+        const random = minV + Math.floor(Math.random() * (maxV - minV + 1));
+        return random;
+      }
+
+      function getExampleForUser(maxV, minV) {
+        let number1 = randomNumber(maxNum, minNum);
+        let number2 = randomNumber(maxNum, minNum);
+        const sum = number1 + number2;
+        let result;
+        let userNumer = parseInt(prompt(`${number1} + ${number2}`));
+        if (userNumer === sum) result = "Результа вірний";
+        else result = "Результа не вірний";
+        alert(result);
+      }
+
+      const minNum = 1;
+      const maxNum = 15;
+      const result = randomNumber(maxNum, minNum);
+      const finishResult = getExampleForUser(maxNum, minNum);
+      setInterval(getExampleForUser, 10000, minNum, maxNum);
+    </script>
+  </body>
+</html>
