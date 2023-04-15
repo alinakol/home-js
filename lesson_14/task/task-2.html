@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-2</h1>
+    <p>
+      Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити,
+      який буде рік через N місяців.
+    </p>
+    <script>
+      const userNum = parseInt(prompt("Введіть кількість місяців:", "0"));
+      let timeObj = {
+        day: 23,
+        month: 4,
+        year: 2023,
+      };
+      function getYearAfterMonths({ day, month, year }, userNum) {
+        const totalMonth = month + userNum; // Обчислюємо загальну кількість місяців //39
+        const newMonth = totalMonth % 12 === 0 ? 12 : totalMonth % 12; // Обчислюємо новий місяць 3
+        const newYear = Math.floor((totalMonth - 1) / 12) + year; // Обчислюємо новий рік
+        return {
+          // Повертаємо новий обьєкт з новою датою
+          day,
+          newMonth,
+          newYear,
+        };
+      }
+
+      const newDate = getYearAfterMonths(timeObj, userNum);
+      document.write(
+        `Початкова дата: ${
+          timeObj.day < 10 ? "0" + timeObj.day : timeObj.day
+        }.${timeObj.month < 10 ? "0" + timeObj.month : timeObj.month}.${
+          timeObj.year
+        } <br>  Нова дата через ${userNum} місяців:
+      ${newDate.day < 10 ? "0" + newDate.day : newDate.day}.${
+          newDate.newMonth < 10 ? "0" + newDate.newMonth : newDate.newMonth
+        }.${newDate.newYear}`
+      );
+    </script>
+  </body>
+</html>

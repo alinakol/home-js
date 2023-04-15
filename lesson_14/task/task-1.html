@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-1</h1>
+    <p>
+      Описати масив об’єктів – сайтів розроблених компанією з такими
+      властивостями <br />
+      ----- Властивості ------ <br />
+      назва компанії на час розробки (назву періодично змінюють) <br />
+      власник компанії <br />
+      споснсори (масив спонсорів) <br />
+      * прізвище спонсора <br />
+      * ім’я спонсора <br />
+      * сума вкладень спонсора <br />
+      рік випуску <br />
+      вартість сайту <br />
+      Знайти: <br />
+      1) загальну вартість усіх сайтів <br />
+      2) кількість сайтів, що було зроблено між 2000 та 2009 рр. <br />
+      3) кількість сайтів, де сума спонсорських вкладень була більшою за 100000
+      <br />
+      4) створити загальний список усіх спонсорів (поки можуть повторюватись,
+      просто зібрати усі у масив) <br />
+      5) знайти рік, коли прибуток був найбільшим <br />
+      6) упорядкувати список за спаданням прибутку <br />
+      7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з
+      вартість до 10000 і більше 10000
+    </p>
+    <script>
+      let totalSite = [
+        {
+          nameCompany: "Rozetka",
+          ownerCompany: "Mamedova A.A.",
+          sponsors: [
+            { surname: "Mamedova", name: "Anna", sum: 30000 },
+            { surname: "Ghdbdh", name: "Max", sum: 65000 },
+          ],
+          yearCreation: 2000,
+          costSite: 5000,
+        },
+
+        {
+          nameCompany: "Malish",
+          ownerCompany: "Sponov A.A.",
+          sponsors: [
+            { surname: "Shostak", name: "Lev", sum: 88000 },
+            { surname: "Skrip", name: "Alina", sum: 54000 },
+            { surname: "Avakov", name: "Petro", sum: 23000 },
+          ],
+          yearCreation: 2020,
+          costSite: 702000,
+        },
+
+        {
+          nameCompany: "CrazyLand",
+          ownerCompany: "Piskov N.C.",
+          sponsors: [
+            { surname: "Panov", name: "Sasha", sum: 36500 },
+            { surname: "Nikov", name: "Bpgdan", sum: 189000 },
+          ],
+          yearCreation: 2011,
+          costSite: 235000,
+        },
+
+        {
+          nameCompany: "GalaBaluvana",
+          ownerCompany: "Homov N.C.",
+          sponsors: [
+            { surname: "Boba", name: "Sasha", sum: 12500 },
+            { surname: "mishailov", name: "miosha", sum: 49000 },
+          ],
+          yearCreation: 2009,
+          costSite: 365000,
+        },
+      ];
+
+      //1) загальну вартість усіх сайтів <br />
+      const totalSumallSite = totalSite.reduce(
+        (prevSum, site) => prevSum + site.costSite,
+        0
+      );
+
+      //    2) кількість сайтів, що було зроблено між 2000 та 2009 рр. <br />
+      let counter = 0;
+      const siteCreation_2000_2009 = totalSite.filter((site) => {
+        if (site.yearCreation >= 2000 && site.yearCreation <= 2009) {
+          counter++;
+        }
+      });
+      //кількість сайтів, де сума спонсорських вкладень була більшою за 100000
+
+      const sponsorsSumMore_100000 = totalSite.reduce((prevSum, site) => {
+        let sumAllSponsorsSum = site.sponsors.reduce(
+          (prevSum, sumSponsor) => prevSum + sumSponsor.sum,
+          0
+        );
+
+        if (sumAllSponsorsSum > 100000) return ++prevSum;
+        else return prevSum;
+      }, 0);
+
+      //створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+      let listSponsors = [];
+      for (const company of totalSite) {
+        for (const sponsor of company.sponsors) {
+          listSponsors.push(sponsor.surname + " " + sponsor.name);
+        }
+      }
+      console.log(listSponsors);
+
+      //знайти рік, коли прибуток був найбільшим
+      let maxPrice = 0;
+      for (const kay of totalSite) {
+        if (maxPrice < kay.costSite) maxPrice = kay.costSite;
+      }
+      let yearMaxPrice;
+      for (const company of totalSite) {
+        if (company.costSite === maxPrice) yearMaxPrice = company.yearCreation;
+      }
+      // упорядкувати список за спаданням прибутку <br />
+      totalSite.sort((el1, el2) => el2.costSite - el1.costSite);
+      console.log(totalSite);
+
+      // Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+      let sum = 10000;
+      let siteBefore_10000 = totalSite.filter((site) => site.costSite <= sum);
+      let siteMore_10000 = totalSite.filter((site) => site.costSite >= sum);
+
+      console.log(siteBefore_10000);
+      console.log(siteMore_10000);
+
+      document.write(
+        `Загальну вартість усіх сайтів - ${totalSumallSite} <br> Кількість сайтів, що було зроблено між 2000 та 2009 рр. - ${counter} <br > Kількість сайтів, де сума спонсорських вкладень була більшою за 100000 -  ${sponsorsSumMore_100000} <br>Cтворити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив) - ${listSponsors} <br> Знайти рік, коли прибуток був найбільшим - ${yearMaxPrice} <br> Yпорядкувати список за спаданням прибутку Товари, які доступні (sell_status:"available") <br> Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000 (дивю.  console.log)`
+      );
+    </script>
+  </body>
+</html>
