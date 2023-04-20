@@ -41,10 +41,11 @@
       const sum2 = obj1.sumArr.call(obj2);
       document.write(`Cума елементів масиву obj2 : ${sum2}<br>`);
 
-      const mult1 = obj2.getMult(3, 44);
-      document.write(`Добуток елементів масиву obj1: ${mult1}.<br>`);
       const mult2 = obj2.getMult.apply(obj1, [3, 44]);
-      document.write(`Добуток елементів масиву obj2: ${mult2}.<br>`);
+      document.write(`Добуток елементів масиву obj1: ${mult2}.<br>`);
+
+      const mult1 = obj2.getMult(3, 44);
+      document.write(`Добуток елементів масиву obj2: ${mult1}.<br>`);
     </script>
   </body>
 </html>
