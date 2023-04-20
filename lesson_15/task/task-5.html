@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-5</h1>
+    <p>
+      Розробити клас «Керівник танців» <br />Масив імен хлопців<br />
+      Масив імен дівчат<br />
+      <br />
+      Метод випадкового вибору імені хлопця<br />
+      Метод випадкового вибору імені дівчини<br />
+      Метод виведення пари для танців<br />
+      Метод run , який ініціює через кожні 5 секунд виведення нової пари для
+      танців
+    </p>
+    <script>
+      //Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців
+      class DancerPair {
+        constructor(arrBoys, arrGirls) {
+          this.arrBoys = arrBoys;
+          this.arrGirls = arrGirls;
+        }
+        //Метод випадкового вибору імені хлопця
+        getRandomChoiceBoy() {
+          const randomChoiceBoy = Math.floor(
+            Math.random() * this.arrBoys.length
+          );
+          return this.arrBoys[randomChoiceBoy];
+        }
+        //Метод випадкового вибору імені дівчини
+        getRandomChoiceGirl() {
+          const randomChoiceGirl = Math.floor(
+            Math.random() * this.arrGirls.length
+          );
+          return this.arrGirls[randomChoiceGirl];
+        }
+        //Метод виведення пари для танців
+        showPairDancers() {
+          alert(`${this.getRandomChoiceBoy()} ${this.getRandomChoiceGirl()} `);
+        }
+
+        //Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців
+        run() {
+          setInterval(() => {
+            this.showPairDancers();
+          }, 5000);
+        }
+      }
+      const arrBoys = ["Max", "Ivan", " Bogdan", "Anton", "Oleg", "Sasha"];
+      const arrGirls = ["Alina", "Olia", "Sveta", "Inna", "Dasha", "Katia"];
+      let newObj = new DancerPair(arrBoys, arrGirls);
+      newObj.run();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-0</h1>
+    <p>
+      Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з
+      них є функція знаходження суми, а у іншому – функція для знаходження
+      добутку тих, які знаходяться між заданими мінімальним і максимальних
+      значенням. Використати обидва методи стосовно обидвох об’єктів
+      (використати call, apply)
+    </p>
+    <script>
+      let obj1 = {
+        arr: [55, 17, 4, 1, 5],
+        sumArr: function () {
+          let sum = this.arr.reduce((prevSum, number) => prevSum + number, 0);
+          return sum;
+        },
+      };
+      let obj2 = {
+        arr: [65, 19, 10, 30, 53],
+        getMult: function (min, max) {
+          let mult = this.arr
+            .filter((el) => el >= min && el <= max)
+            .reduce((prev, next) => prev * next, 1);
+          return mult;
+        },
+      };
+      document.write(`Масив obj1 : ${obj1.arr}<br>`);
+      document.write(`Масив obj2 : ${obj2.arr}<br>`);
+
+      const sum1 = obj1.sumArr();
+      document.write(`Cума елементів масиву obj1 : ${sum1}<br>`);
+
+      const sum2 = obj1.sumArr.call(obj2);
+      document.write(`Cума елементів масиву obj2 : ${sum2}<br>`);
+
+      const mult1 = obj2.getMult(3, 44);
+      document.write(`Добуток елементів масиву obj1: ${mult1}.<br>`);
+      const mult2 = obj2.getMult.apply(obj1, [3, 44]);
+      document.write(`Добуток елементів масиву obj2: ${mult2}.<br>`);
+    </script>
+  </body>
+</html>

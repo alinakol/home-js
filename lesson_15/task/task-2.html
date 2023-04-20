@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-2</h1>
+    <p>
+      Створити об’єкт «Авто».<br />
+      <br />Поля(властивості)<br />
+      Марка <br />
+      Розмір бака <br />
+      Кількість наявних літрів<br />
+      Кількість місць<br />
+      Кількість пасажирів<br />
+      <br />Методи (дії) <br />
+      Заправка на вказану кількість літрів<br />
+      Виведення кількості пасажирів<br />
+      Додавання пасажирів<br />
+      Висадка пасажирів
+    </p>
+    <script>
+      class Auto {
+        constructor(
+          model,
+          sizeTank,
+          quantityLiterInTank,
+          passengerPlaces,
+          quantityPassengers
+        ) {
+          this.model = model;
+          this.sizeTank = sizeTank;
+          this.quantityLiterInTank = quantityLiterInTank;
+          this.passengerPlaces = passengerPlaces;
+          this.quantityPassengers = quantityPassengers;
+        }
+        // Заправка на вказану кількість літрів
+        refuelingCar() {
+          const quantityLiters = parseInt(
+            prompt(
+              `Скільки літрів заправити. Ви можете заправити максимум ${
+                this.sizeTank - this.quantityLiterInTank
+              } літрів`
+            )
+          );
+          let resultRefuelingCar = this.quantityLiterInTank + quantityLiters;
+
+          if (resultRefuelingCar > this.sizeTank) {
+            alert(
+              "Не можемо заправити, така кільскість літрів не посміститься в бак!!!"
+            );
+          } else {
+            let moreLiters = this.sizeTank - resultRefuelingCar;
+            alert(`Ви ще можете заправити на ${moreLiters} літр.`);
+          }
+        }
+        // Виведення кількості пасажирів
+        showQuantityPassengers() {
+          alert(`Ви здійснили посадку - ${this.quantityPassengers} пасажирів `);
+        }
+        //Додавання пасажирів
+        addPassengers() {
+          let freeSeat = this.passengerPlaces - this.quantityPassengers;
+          do {
+            let addPassenger = parseInt(prompt(`Скільки пасажирів зайшло?`));
+            if (addPassenger > freeSeat) {
+              alert("У вас немає такої кількості місць для пасажирів ");
+            } else {
+              alert(`залишилось ${freeSeat - addPassenger} вільних місць `);
+              freeSeat -= addPassenger;
+            }
+          } while (freeSeat > 0);
+        }
+        //Висадка пасажирів
+        leftPassengers() {
+          do {
+            let leftPassenger = parseInt(prompt(`Скільки пасажирів Вийшло?`));
+            if (leftPassenger > this.quantityPassengers)
+              alert("У вас такої кількості пасажирів немає");
+            else {
+              alert(
+                `Залишилось ${this.quantityPassengers - leftPassenger} пасажири`
+              );
+              this.quantityPassengers -= leftPassenger;
+            }
+          } while (this.quantityPassengers > 0);
+        }
+      }
+
+      let r1 = new Auto("BMW", 80, 45, 38, 18);
+      let rezultRefuelingCar = r1.refuelingCar();
+      let showPassengers = r1.showQuantityPassengers();
+      let funAddPassengers = r1.addPassengers();
+      let funLeftPassengers = r1.leftPassengers();
+    </script>
+  </body>
+</html>

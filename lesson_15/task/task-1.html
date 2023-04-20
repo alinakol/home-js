@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-1</h1>
+    <p>
+      Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є
+      заєць і 0 в іншому випадку.<br />
+      Масив, у якому зберігається поле з зайцями <br />
+      Метод пострілу (задається позиція пострілу) <br />
+      Виведення ігрового поля
+    </p>
+    <script>
+      //Масив, у якому зберігається поле з зайцями
+      function GetArrTir(arr) {
+        this.gameArr = arr;
+      }
+
+      //Метод пострілу (задається позиція пострілу)
+      //Виведення ігрового поля
+      GetArrTir.prototype.gameTir = function () {
+        let rabbitsQuantity = this.gameArr.reduce(
+          (prevNum, cell) => (cell === 1 ? prevNum + 1 : prevNum),
+          0
+        );
+        let user;
+        do {
+          user = parseInt(
+            prompt(`Зробіть вистріл в межах 0 до ${this.gameArr.length - 1}.`)
+          );
+          if (this.gameArr[user] === 1) {
+            alert("Ви влучили!!!");
+            rabbitsQuantity--;
+          } else alert("Не влучили спробуйте ще раз");
+        } while (rabbitsQuantity > 0);
+      };
+
+      const arrRabbit = {
+        arr: [0, 1, 0, 1, 1, 0, 1],
+      };
+      const resultArr = arrRabbit.arr;
+
+      const arrTir = new GetArrTir(resultArr);
+      const resultGame = arrTir.gameTir();
+
+      console.log(arrTir);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-3</h1>
+    <p>
+      Розробити клас MultChecker для перевірки таблиці множення <br />
+      Число, яке перевіряємо (наприклад, перевірка частини таблиці множення на
+      7)<br />
+      Кількість правильних відповідей<br />
+      Кількість неправильних відповідей<br />
+      <br />
+      Генерування прикладу (метод випадковим чином визначає друге число, перше
+      число фіксоване)<br />
+      Перевірка правильності вказаної відповіді<br />
+      render - виведення інформації про тестування на екран
+    </p>
+    <script>
+      class MultChecker {
+        constructor(number) {
+          this.NumForMult = number;
+          this.TrueAnswer = 0;
+          this.FalseAnswer = 0;
+        }
+        //Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)
+        getExampel() {
+          let user;
+          do {
+            const randomNum = 1 + Math.floor(Math.random() * 10);
+            const exampel = this.NumForMult * randomNum;
+            user = parseInt(prompt(`${this.NumForMult} * ${randomNum} =`));
+            this.checkCorrect(exampel, user);
+          } while (confirm(`Хочете ще розвязувати приклади`));
+        }
+        //Перевірка правильності вказаної відповіді
+        checkCorrect(exampel, user) {
+          return exampel === user ? this.TrueAnswer++ : this.FalseAnswer++;
+        }
+        // render - виведення інформації про тестування на екран
+
+        toString() {
+          return `Таблиця множення на ${this.NumForMult} <br>
+			  К-сть правильних выдповідей ${this.TrueAnswer} <br> 
+			  К-сть неправильних выдповідей ${this.FalseAnswer}`;
+        }
+      }
+
+      let newClass = new MultChecker(5);
+      newClass.getExampel();
+      document.write(newClass);
+    </script>
+  </body>
+</html>

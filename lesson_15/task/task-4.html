@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача-4</h1>
+    <p>
+      Розробити клас Baner <br />Масив об’єктів ( графічних зображень та
+      посилань на сайти) <br />
+      <br />
+
+      Метод випадкового вибору об’єкта (графічного зображення та посилання)
+      <br />
+      Метод виведення випадкового банера
+    </p>
+    <script>
+      class Baner {
+        constructor(arrBaner) {
+          this.arrBaner = arrBaner;
+        }
+        //Метод випадкового вибору об’єкта (графічного зображення та посилання)
+
+        randomBaner() {
+          const randomObj = Math.floor(Math.random() * this.arrBaner.length);
+          return this.arrBaner[randomObj]; //нп:2
+        }
+
+        //Метод виведення випадкового бане
+
+        showBaner() {
+          let randombaner = this.randomBaner(); //нп:2
+          document.write(
+            `<a href="${randombaner.link}"> <img src="../task/img/${randombaner.img}" width="500px"></a>`
+          );
+        }
+      }
+      //Масив об’єктів ( графічних зображень та посилань на сайти)
+      const arrBaner = [
+        {
+          img: "1.jpg",
+          link: "https://www.ukrmol.kiev.ua/2021/04/blog-post_9.html?m=1",
+        },
+        {
+          img: "2.jpg ",
+          link: "https://latifundist.com/blog/read/2907-efekt-metelika-abo-yak-vijna-v-ukrayini-provokuye-svitovu-prodovolchu-krizu",
+        },
+        {
+          img: "3.jpg ",
+          link: "https://tusovka.kr.ua/news/2014/05/16/-diti-divljatsja-diti-povtorjujut",
+        },
+      ];
+
+      let newObj = new Baner(arrBaner);
+      newObj.showBaner();
+    </script>
+  </body>
+</html>
